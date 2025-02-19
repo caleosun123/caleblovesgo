@@ -4,6 +4,11 @@ FROM golang:1.19 as builder
 # Set the Current Working Directory inside the container
 WORKDIR /app
 
+# Copy go.mod and go.sum files first to leverage Docker cache
+COPY go.mod ./
+COPY go.sum ./
+RUN go mod download
+
 # Copy the source code into the container
 COPY . .
 
