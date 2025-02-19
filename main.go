@@ -11,7 +11,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 }
 
 func messageHandler(w http.ResponseWriter, r *http.Request) {
-  w.write([]byte("Hello from HTMX!"))
+  w.Write([]byte("Hello from HTMX!"))
 }
 
 func main() {
