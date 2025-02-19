@@ -26,14 +26,8 @@ func main() {
 	mux.HandleFunc("/message", messageHandler)
 
 	// Custom 404 handler
-	mux.HandleFunc("/404", notFoundHandler)
-	mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		if r.URL.Path != "/" && r.URL.Path != "/message" {
-			http.Redirect(w, r, "/404", http.StatusSeeOther)
-		} else {
-			handler(w, r)
-		}
-	})
+	mux.Handle("/404", http.HandlerFunc(notFoundHandler))
+	mux.Handle("/favicon.ico", http.NotFoundHandler())
 
 	http.ListenAndServe(":8080", mux)
 }
