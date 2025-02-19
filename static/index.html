@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hello HTMX</title>
+    <script src="https://unpkg.com/htmx.org@1.7.0"></script>
+  </head>
+  <body>
+    <h1>Hello, HTMX!</h1>
+    <div hx-get="/message" hx-trigger="load" hx-target="message">
+      <p id="message">Loading...</p>
+    </div>
+  </body>
+</html>
